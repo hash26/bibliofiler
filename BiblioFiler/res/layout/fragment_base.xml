@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_container_2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BFBaseActivity" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_world" />
+
+    <Button
+        android:id="@+id/button_base_goSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="77dp"
+        android:text="検索へ" />
+
+    <Button
+        android:id="@+id/button_base_goList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_base_goSearch"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:text="リストビューへ" />
+
+    <Button
+        android:id="@+id/button_base_goRegist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_base_goList"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:text="登録へ" />
+
+</RelativeLayout>
