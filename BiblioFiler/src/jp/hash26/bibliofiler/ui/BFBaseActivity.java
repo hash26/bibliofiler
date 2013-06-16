@@ -1,5 +1,7 @@
-package jp.hash26.bibliofiler;
+package jp.hash26.bibliofiler.ui;
 
+import jp.hash26.bibliofiler.R;
+import jp.hash26.bibliofiler.R.layout;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;

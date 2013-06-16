@@ -4,6 +4,6 @@
     <string name="app_name">BiblioFiler</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="hello_world">変更</string>
+    <string name="test">変更</string>
 
 </resources>
