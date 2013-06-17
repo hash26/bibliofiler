@@ -3,6 +3,8 @@
     package="jp.hash26.bibliofiler"
     android:versionCode="1"
     android:versionName="1.0" >
+    
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <uses-sdk
         android:minSdkVersion="16"
@@ -23,5 +25,7 @@
             </intent-filter>
         </activity>
     </application>
+
+    
 
 </manifest>

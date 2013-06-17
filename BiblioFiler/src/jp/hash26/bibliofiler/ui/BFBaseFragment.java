@@ -54,6 +54,24 @@ public class BFBaseFragment extends Fragment {
 						transaction.commit();
 					}
 				});
+		
+		view.findViewById(R.id.button_base_goSearch).setOnClickListener(
+				new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						Log.d("hoi", "hoi");
+						FragmentManager manager = getFragmentManager();
+						FragmentTransaction transaction = manager
+								.beginTransaction();
+						BFBookSearchFragment searchfragment = new BFBookSearchFragment();
+						transaction
+								.add(R.id.fragment_container, searchfragment);
+						transaction.addToBackStack(null);
+
+						transaction.commit();
+					}
+				});
 
 		return view;
 	}
