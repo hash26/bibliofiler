@@ -14,6 +14,9 @@ import org.json.JSONObject;
 import android.os.AsyncTask;
 import android.util.Log;
 
+
+// http://d.hatena.ne.jp/language_and_engineering/20111121/p1
+
 public class BFHttpHelper extends AsyncTask<Object, Object, Object> {
 
 	public void start() {
@@ -45,7 +48,7 @@ public class BFHttpHelper extends AsyncTask<Object, Object, Object> {
 	protected Object doInBackground(Object... params) {
 
 		HttpClient httpClient = new DefaultHttpClient();
-		String url = buildRequestUrl();
+		String url = null;
 		HttpGet request = new HttpGet(url);
 		HttpResponse httpResponse = null;
 

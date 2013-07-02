@@ -1,4 +1,3 @@
-
 package jp.hash26.bibliofiler.http;
 
 import java.io.ByteArrayOutputStream;
@@ -6,6 +5,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.ClientProtocolException;
@@ -16,91 +16,108 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
 import jp.hash26.bibliofiler.util.BFLog;
+import android.app.Activity;
 import android.database.CursorJoiner.Result;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.util.Log;
 
 public class BFHttpGetTask extends AsyncTask<Void, Void, Void> {
 
-    // 設定事項
-    private String request_encoding = "UTF-8";
+	// 設定事項
+	private String request_encoding = "UTF-8";
 
-    private String response_encoding = "UTF-8";
+	private String response_encoding = "UTF-8";
 
-    private ResponseHandler<Void> _response_handler;
+	private String http_err_msg = null;
 
-    private String http_err_msg = null;
+	private String http_ret_msg = null;
 
-    private String http_ret_msg = null;
+	private HttpGet _request;
 
-    private String _requestUrl;
+	private Handler _ui_handler;
 
-    private URI _requestUri;
+	private Activity _parent_activity;
 
-    BFHttpGetTask(String requestUrl) {
-        _requestUrl = requestUrl;
-    }
+	BFHttpGetTask(String requestUrl) {
+		_request = new HttpGet(requestUrl);
+	}
+	
+	  // 生成時
+	  public BFHttpGetTask(Activity parent_activity, String requestUrl, Handler ui_handler )
+	  {
+	    // 初期化
+	    _parent_activity = parent_activity;
+	    _request = new HttpGet(requestUrl);
+	    _ui_handler = ui_handler;
 
-    @Override
-    protected void onPreExecute() {
-        BFLog.debug("onPreExecute()");
+	  }
 
-        // レスポンスハンドラを生成
-        _response_handler = new ResponseHandler<Void>() {
+	private ResponseHandler<Void> _responseHandler = new ResponseHandler<Void>() {
 
-            @Override
-            public Void handleResponse(HttpResponse response) throws ClientProtocolException,
-                    IOException {
-                BFLog.debug("ResponseCode=" + response.getStatusLine().getStatusCode());
+		@Override
+		public Void handleResponse(HttpResponse response)
+				throws ClientProtocolException, IOException {
+			BFLog.debug("ResponseCode="
+					+ response.getStatusLine().getStatusCode());
 
-                switch (response.getStatusLine().getStatusCode()) {
-                    case HttpStatus.SC_OK:
-                        BFLog.debug("レスポンス結果：レスポンスの取得に成功");
+			switch (response.getStatusLine().getStatusCode()) {
+			case HttpStatus.SC_OK:
+				BFLog.debug("レスポンス結果：レスポンスの取得に成功");
 
-                        // レスポンスデータをエンコード済みの文字列として取得する。
-                        // ※IOExceptionの可能性あり
-                        BFHttpGetTask.this.http_ret_msg = EntityUtils.toString(
-                                response.getEntity(), BFHttpGetTask.this.response_encoding);
-                        break;
+				// レスポンスデータをエンコード済みの文字列として取得する。
+				// IOExceptionの可能性あり
+				BFHttpGetTask.this.http_ret_msg = EntityUtils.toString(
+						response.getEntity(),
+						BFHttpGetTask.this.response_encoding);
+				break;
 
-                    case HttpStatus.SC_NOT_FOUND:
-                        BFLog.debug("レスポンス結果：存在しない");
-                        BFHttpGetTask.this.http_err_msg = "404 Not Found";
-                        break;
+			case HttpStatus.SC_NOT_FOUND:
+				BFLog.debug("レスポンス結果：存在しない");
+				BFHttpGetTask.this.http_err_msg = "404 Not Found";
+				break;
 
-                    default:
-                        BFLog.debug("レスポンス結果：通信エラー");
-                        BFHttpGetTask.this.http_err_msg = "通信エラーが発生";
-                }
-                return null;
-            }
-        };
-    }
+			default:
+				BFLog.debug("レスポンス結果：通信エラー");
+				BFHttpGetTask.this.http_err_msg = "通信エラーが発生";
+			}
+			return null;
+		}
+	};
 
-    @Override
-    protected Void doInBackground(Void... params) {
+	@Override
+	protected void onPreExecute() {
+		BFLog.debug("onPreExecute()");
+	}
 
-        BFLog.debug("doInBackground()");
+	@Override
+	protected Void doInBackground(Void... params) {
 
-        try {
-            _requestUri = new URI(_requestUrl);
-        } catch (URISyntaxException e1) {
-            // TODO 自動生成された catch ブロック
-            e1.printStackTrace();
-        }
+		BFLog.debug("doInBackground()");
 
-        HttpClient httpClient = new DefaultHttpClient();
-        httpClient.execute(_requestUri, _response_handler);
-        HttpGet request = new HttpGet(_requestUri);
-        HttpResponse httpResponse = null;
+		HttpClient httpClient = new DefaultHttpClient();
+		try {
+			httpClient.execute(_request, _responseHandler);
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
-        try {
-            httpResponse = httpClient.execute(request);
-        } catch (Exception e) {
-            Log.d("HttpSampleActivity", "Error Execute");
-            Log.d("HttpSampleActivity", e.toString());
-        }
+		return null;
+	}
 
-        return null;
-    }
+	@Override
+	protected void onPostExecute(Void result) {
+		
+	    if (http_err_msg != null) {
+	        // エラー発生時
+	    	
+	      } else {
+	        // 通信成功時
+	    	  
+	      }
+	}
+	
+	
 }
