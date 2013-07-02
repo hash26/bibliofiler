@@ -73,14 +73,4 @@ public class BFHttpHelper extends AsyncTask<Object, Object, Object> {
 		}
 		return status;
 	}
-
-	private String buildRequestUrl() {
-
-		StringBuilder uri = new StringBuilder(
-				"https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522?");
-		uri.append("applicationId=1069434514563894160");
-		uri.append("&title=english");
-		return uri.toString();
-	}
-
 }

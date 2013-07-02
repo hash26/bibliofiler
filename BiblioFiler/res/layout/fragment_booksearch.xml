@@ -2,12 +2,44 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/button_booksearch_doSearch"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="検索実行" />
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/edittext_booksearch_searchword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+        </EditText>
+
+        <Button
+            android:id="@+id/button_booksearch_doSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="検索実行" />
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/radiogrp_booksearch_searchby"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <RadioButton
+            android:id="@+id/radiobtn_booksearch_keyword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="キーワード" />
+
+        <RadioButton
+            android:id="@+id/radiobtn_booksearch_isbn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ISBN" />
+    </RadioGroup>
 
 </LinearLayout>
