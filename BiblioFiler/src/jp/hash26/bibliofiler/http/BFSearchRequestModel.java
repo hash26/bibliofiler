@@ -64,28 +64,28 @@ public class BFSearchRequestModel {
         _isbn = isbn;
     }
 
-    public String buildParamsString() {
-        return null;
-    }
-
-    public String RequestPramaterBuilder() throws UnsupportedEncodingException {
+    public String getParamsString() throws UnsupportedEncodingException {
         
         StringBuilder builder = new StringBuilder();
         
         builder.append(RAKUTEN_BOOKS_SEARCH_BASE_URL);
+        
+        builder.append("applicationId=");
         builder.append(RAKUTEN_DEVELOPER_ID);
         
         if (_keyword != null) {
             builder.append("&keyword=");
-            URLEncoder.encode(_keyword, "UTF-8");
+            builder.append(URLEncoder.encode(_keyword, "UTF-8"));
         }
 
         if (_isbn != null) {
             builder.append("&isbnjan=");
-            URLEncoder.encode(_keyword, "UTF-8");
+            builder.append(URLEncoder.encode(_keyword, "UTF-8"));
         }
         
         BFLog.debug(builder.toString());
         return builder.toString();
     }
+    
+
 }
