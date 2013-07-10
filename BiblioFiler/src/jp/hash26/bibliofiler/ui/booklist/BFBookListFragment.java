@@ -49,7 +49,7 @@ public class BFBookListFragment extends BFBaseFragment {
             
             BFBookDeatilBaseFragment fragment = new BFBookDeatilBaseFragment();
             fragment.setBookCellBean(_booklist);
-            FragmentManager fm = getFragmentManager();
+            tranceFragment(fragment);
             
         }
         
