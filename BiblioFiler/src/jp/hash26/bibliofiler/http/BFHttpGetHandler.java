@@ -15,6 +15,7 @@ public abstract class BFHttpGetHandler extends Handler {
     public void handleMessage(Message msg) {
         boolean isGetSuccess = msg.getData().getBoolean("http_get_success");
         String http_response = msg.getData().get("http_response").toString();
+        
 
         if (isGetSuccess) {
             onPostSuccess(http_response);

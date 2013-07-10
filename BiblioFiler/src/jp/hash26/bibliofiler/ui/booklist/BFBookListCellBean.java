@@ -1,22 +1,36 @@
 package jp.hash26.bibliofiler.ui.booklist;
 
-import android.R.bool;
 
 public class BFBookListCellBean {
 
 	private String _bookname;
 	private String _author;
+	private String _largeImageUrl;
+	private int _listprice;
 
 	public BFBookListCellBean(String bookname, String author) {
-		setBookName(bookname);
-		setAuthor(author);
+	    setTitle(bookname);
+	    setAuthor(author);
 	}
+	
+	public BFBookListCellBean() {
+	    // TODO 自動生成されたコンストラクター・スタブ
+	}
+	
+	public String getLargeImageUrl() {
+        return _largeImageUrl;
+    }
 
-	public String getTitle() {
+    public void setLargeImageUrl(String largeImageUrl) {
+        _largeImageUrl = largeImageUrl;
+    }
+
+
+    public String getTitle() {
 		return _bookname;
 	}
 
-	public void setBookName(String bookname) {
+	public void setTitle(String bookname) {
 		_bookname = bookname;
 	}
 
@@ -27,6 +41,14 @@ public class BFBookListCellBean {
 	public void setAuthor(String author) {
 		_author = author;
 	}
+
+    public String getListprice() {
+        return "¥" + Integer.toString(_listprice);
+    }
+
+    public void setListprice(int listprice) {
+        _listprice = listprice;
+    }
 	
 	
 

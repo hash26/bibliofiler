@@ -2,10 +2,9 @@ package jp.hash26.bibliofiler.ui;
 
 import jp.hash26.bibliofiler.R;
 import jp.hash26.bibliofiler.ui.booklist.BFBookListFragment;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;

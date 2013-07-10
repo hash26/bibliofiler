@@ -11,7 +11,8 @@ import jp.hash26.bibliofiler.util.BFLog;
  */
 public class BFSearchRequestModel {
     
-    static final String RAKUTEN_BOOKS_SEARCH_BASE_URL = "https://app.rakuten.co.jp/services/api/BooksTotal/Search/20130522?";
+    static final String RAKUTEN_BOOKS_BOOK_SEARCH_BASE_URL = "https://app.rakuten.co.jp/services/api/BooksTotal/Search/20130522?";
+    static final String RAKUTEN_BOOKS_GENERAL_SEARCH_BASE_URL = "https://app.rakuten.co.jp/services/api/BooksTotal/Search/20121128?";
     static final String RAKUTEN_DEVELOPER_ID = "1069434514563894160";
 
     String _keyword = null;
@@ -68,7 +69,7 @@ public class BFSearchRequestModel {
         
         StringBuilder builder = new StringBuilder();
         
-        builder.append(RAKUTEN_BOOKS_SEARCH_BASE_URL);
+        builder.append(RAKUTEN_BOOKS_BOOK_SEARCH_BASE_URL);
         
         builder.append("applicationId=");
         builder.append(RAKUTEN_DEVELOPER_ID);
@@ -80,7 +81,12 @@ public class BFSearchRequestModel {
 
         if (_isbn != null) {
             builder.append("&isbnjan=");
-            builder.append(URLEncoder.encode(_keyword, "UTF-8"));
+            builder.append(URLEncoder.encode(_isbn, "UTF-8"));
+        }
+        
+        if (true) {
+            builder.append("&booksGenreId=");
+            builder.append(URLEncoder.encode("001", "UTF-8"));
         }
         
         BFLog.debug(builder.toString());

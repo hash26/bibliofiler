@@ -2,18 +2,25 @@
 package jp.hash26.bibliofiler.ui;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
 import jp.hash26.bibliofiler.R;
 import jp.hash26.bibliofiler.http.BFHttpGetHandler;
 import jp.hash26.bibliofiler.http.BFHttpGetTask;
-import jp.hash26.bibliofiler.http.BFJsonParser;
+import jp.hash26.bibliofiler.http.BFRakutenBookDataModel;
+import jp.hash26.bibliofiler.http.BFRakutenBookDataModel.BookItem;
 import jp.hash26.bibliofiler.http.BFSearchRequestModel;
+import jp.hash26.bibliofiler.ui.booklist.BFBookListCellBean;
+import jp.hash26.bibliofiler.ui.booklist.BFBookListFragment;
 import jp.hash26.bibliofiler.util.BFLog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +35,8 @@ public class BFBookSearchFragment extends BFBaseFragment {
     RadioGroup _radioGrp;
 
     Button _buttonSearch;
+    
+    private ProgressDialog _progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -48,6 +57,18 @@ public class BFBookSearchFragment extends BFBaseFragment {
 
         @Override
         public void onClick(View view) {
+            
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
+                    Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(),
+                    InputMethodManager.HIDE_NOT_ALWAYS);
+            
+            // 通信中ダイアログ表示
+            _progressDialog = new ProgressDialog(getActivity());
+            _progressDialog.setTitle("通信中");
+            _progressDialog.setMessage("検索結果を取得中...");
+            _progressDialog.show();
+            
             // 検索ボタン押下時
             BFLog.debug("検索ボタンがタップされました。");
             String searchword = _edittextSearchWord.getText().toString();
@@ -88,11 +109,35 @@ public class BFBookSearchFragment extends BFBaseFragment {
         @Override
         public void onPostSuccess(String response) {
             BFLog.debug("responce=" + response);
-            BFJsonParser.parseJson(response);
+            BFRakutenBookDataModel model = new BFRakutenBookDataModel().getModelFromJson(response);
+            
+            ArrayList<BookItem> bookitems = model.getItemlist();
+            ArrayList<BFBookListCellBean> beanlist = new ArrayList<BFBookListCellBean>();
+            
+            for (int i = 0; i < bookitems.size(); i++) {
+                BookItem bookitem = bookitems.get(i);
+                BFBookListCellBean bean = new BFBookListCellBean();
+                bean.setTitle(bookitem.getTitle());
+                bean.setAuthor(bookitem.getAuthor());
+                bean.setListprice(bookitem.getListPrice());
+                bean.setLargeImageUrl(bookitem.getLargeImageUrl());
+                
+                beanlist.add(bean);
+            }
+            
+            ((BFBaseActivity) getActivity()).setBooklist(beanlist);
+            BFLog.debug("検索結果を" + beanlist.size() + "件 保持しました。");
+            _progressDialog.dismiss();
+            
+            tranceFragment(new BFBookListFragment());
         }
 
         @Override
         public void onPostFailed(String response) {
+            _progressDialog.setTitle("検索処理失敗");
+            _progressDialog.setMessage("検索処理に失敗しました。");
+            
+            //_progressDialog.dismiss();
             Toast.makeText(getActivity(), "検索処理に失敗しました。", Toast.LENGTH_SHORT).show();
             BFLog.debug("検索処理に失敗しました。");
             BFLog.debug("responce=" + response);

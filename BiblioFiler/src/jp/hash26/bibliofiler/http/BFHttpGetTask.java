@@ -95,8 +95,10 @@ public class BFHttpGetTask extends AsyncTask<Void, Void, Void> {
             httpClient.execute(_request, _responseHandler);
         } catch (ClientProtocolException e) {
             e.printStackTrace();
+            http_err_msg = e.toString();
         } catch (IOException e) {
             e.printStackTrace();
+            http_err_msg = e.toString();
         }
 
         return null;

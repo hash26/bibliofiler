@@ -1,33 +1,45 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="70dp"
     android:layout_gravity="center_vertical"
     android:orientation="horizontal" >
 
-    <ImageView
+    <jp.sharakova.android.urlimageview.UrlImageView
         android:id="@+id/imageview_booklist_bookimage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:contentDescription="bookimage"
         android:src="@drawable/ic_launcher" />
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="vertical"
-        android:gravity="center_vertical" >
+        android:gravity="center_vertical"
+        android:orientation="vertical" >
 
         <TextView
             android:id="@+id/text_booklist_booktitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="書籍タイトル" />
+            android:layout_weight="1"
+            android:text="書籍タイトル"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/text_booklist_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="著者名" />
+            android:layout_weight="1"
+            android:text="著者名"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/text_booklist_listprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="定価"
+            android:textSize="12sp" />
     </LinearLayout>
 
 </LinearLayout>
