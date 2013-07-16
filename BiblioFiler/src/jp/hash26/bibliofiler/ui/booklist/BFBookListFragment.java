@@ -6,6 +6,7 @@ import jp.hash26.bibliofiler.R;
 import jp.hash26.bibliofiler.ui.BFBaseActivity;
 import jp.hash26.bibliofiler.ui.BFBaseFragment;
 import jp.hash26.bibliofiler.ui.BFBookSearchFragment;
+import jp.hash26.bibliofiler.ui.detail.BFBookDeatilBaseFragment;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;

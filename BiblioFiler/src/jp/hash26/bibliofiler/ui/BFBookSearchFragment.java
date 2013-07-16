@@ -8,8 +8,8 @@ import jp.hash26.bibliofiler.R;
 import jp.hash26.bibliofiler.http.BFHttpGetHandler;
 import jp.hash26.bibliofiler.http.BFHttpGetTask;
 import jp.hash26.bibliofiler.http.BFRakutenBookDataModel;
-import jp.hash26.bibliofiler.http.BFRakutenBookDataModel.BookItem;
 import jp.hash26.bibliofiler.http.BFSearchRequestModel;
+import jp.hash26.bibliofiler.http.BookModel;
 import jp.hash26.bibliofiler.ui.booklist.BFBookListCellBean;
 import jp.hash26.bibliofiler.ui.booklist.BFBookListFragment;
 import jp.hash26.bibliofiler.util.BFLog;
@@ -20,8 +20,8 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -111,11 +111,11 @@ public class BFBookSearchFragment extends BFBaseFragment {
             BFLog.debug("responce=" + response);
             BFRakutenBookDataModel model = new BFRakutenBookDataModel().getModelFromJson(response);
             
-            ArrayList<BookItem> bookitems = model.getItemlist();
+            ArrayList<BookModel> bookitems = model.getItemlist();
             ArrayList<BFBookListCellBean> beanlist = new ArrayList<BFBookListCellBean>();
             
             for (int i = 0; i < bookitems.size(); i++) {
-                BookItem bookitem = bookitems.get(i);
+            	BookModel bookitem = bookitems.get(i);
                 BFBookListCellBean bean = new BFBookListCellBean();
                 bean.setTitle(bookitem.getTitle());
                 bean.setAuthor(bookitem.getAuthor());

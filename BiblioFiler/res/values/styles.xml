@@ -4,8 +4,16 @@
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
-    <style name="AppBaseTheme" parent="@android:style/Theme.Holo">
-        <item name="android:background">@android:color/background_dark</item>
+    <style name="AppBaseTheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:background">@android:color/background_light</item>
+    </style>
+
+    <style name="textAppearanceHeaderSmall">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="textAppearanceBodyMidium">
+        <item name="android:textSize">18sp</item>
     </style>
 
     <!-- Application theme. -->

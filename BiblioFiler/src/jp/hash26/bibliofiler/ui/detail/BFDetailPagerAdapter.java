@@ -1,9 +1,9 @@
 
-package jp.hash26.bibliofiler.ui.booklist;
+package jp.hash26.bibliofiler.ui.detail;
 
 import java.util.List;
 
-import jp.hash26.bibliofiler.ui.BFBookDetailFragment;
+import jp.hash26.bibliofiler.ui.booklist.BFBookListCellBean;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

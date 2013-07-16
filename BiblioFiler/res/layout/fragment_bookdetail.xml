@@ -3,45 +3,142 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:padding="15dp" >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:gravity="center"
-        android:orientation="vertical" >
+        android:layout_height="match_parent"
+        android:background="#31000000"
+        android:orientation="vertical"
+        android:padding="15dp" >
 
-        <ImageView
-            android:id="@+id/imageView_bookdetail_mainimage"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/linearLayout_bookdetail_bookimage"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/imageView_bookdetail_mainimage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout_bookdetail_title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon" />
-    </LinearLayout>
+            android:orientation="vertical" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="#DDFFFFFF" />
+
+            <TextView
+                android:id="@+id/textView_bookdetail_headerTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="書籍タイトル"
+                android:textAppearance="@style/textAppearanceHeaderSmall" />
+
+            <TextView
+                android:id="@+id/textView_bookdetail_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="すべてがFになる"
+                android:textAppearance="@style/textAppearanceBodyMidium" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout_bookdetail_author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="#DDFFFFFF" />
+
+            <TextView
+                android:id="@+id/textView_bookdetail_headerAuthor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="著者"
+                android:textAppearance="@style/textAppearanceHeaderSmall" />
+
+            <TextView
+                android:id="@+id/textView_bookdetail_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="森博嗣"
+                android:textAppearance="@style/textAppearanceBodyMidium" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout_bookdetail_listprice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="#DDFFFFFF" />
+
+            <TextView
+                android:id="@+id/textView_bookdetail_headerListprice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="定価"
+                android:textAppearance="@style/textAppearanceHeaderSmall" />
+
+            <TextView
+                android:id="@+id/textView_bookdetail_Listprice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="¥ 3,570"
+                android:textAppearance="@style/textAppearanceBodyMidium" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/linearLayout_bookdetail_publisher"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#DDFFFFFF" />
 
         <TextView
-            android:id="@+id/textView_bookdetail_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="書籍タイトル"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+            android:layout_marginLeft="10dp"
+            android:text="出版社"
+            android:textAppearance="@style/textAppearanceHeaderSmall" />
 
         <TextView
-            android:id="@+id/textView_bookdetail_listprice"
+            android:id="@+id/textView_bookdetail_publisher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="定価：¥ 3,570"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:layout_marginLeft="30dp"
+            android:text="講談社出版"
+            android:textAppearance="@style/textAppearanceBodyMidium" />
     </LinearLayout>
 
     <ImageButton
