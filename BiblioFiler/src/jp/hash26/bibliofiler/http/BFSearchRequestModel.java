@@ -89,7 +89,7 @@ public class BFSearchRequestModel {
             builder.append(URLEncoder.encode("001", "UTF-8"));
         }
         
-        BFLog.debug(builder.toString());
+        BFLog.d(builder.toString());
         return builder.toString();
     }
     

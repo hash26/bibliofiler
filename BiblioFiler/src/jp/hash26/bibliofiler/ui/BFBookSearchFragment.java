@@ -5,11 +5,12 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import jp.hash26.bibliofiler.R;
+import jp.hash26.bibliofiler.db.common.BFBaseActivity;
+import jp.hash26.bibliofiler.db.common.BFBookModel;
 import jp.hash26.bibliofiler.http.BFHttpGetHandler;
 import jp.hash26.bibliofiler.http.BFHttpGetTask;
 import jp.hash26.bibliofiler.http.BFRakutenBookDataModel;
 import jp.hash26.bibliofiler.http.BFSearchRequestModel;
-import jp.hash26.bibliofiler.http.BookModel;
 import jp.hash26.bibliofiler.ui.booklist.BFBookListCellBean;
 import jp.hash26.bibliofiler.ui.booklist.BFBookListFragment;
 import jp.hash26.bibliofiler.util.BFLog;
@@ -70,9 +71,9 @@ public class BFBookSearchFragment extends BFBaseFragment {
             _progressDialog.show();
             
             // 検索ボタン押下時
-            BFLog.debug("検索ボタンがタップされました。");
+            BFLog.d("検索ボタンがタップされました。");
             String searchword = _edittextSearchWord.getText().toString();
-            BFLog.debug("検索ワード:" + searchword);
+            BFLog.d("検索ワード:" + searchword);
 
             RadioButton radioBtn = (RadioButton) _radioGrp.findViewById(_radioGrp
                     .getCheckedRadioButtonId());
@@ -80,12 +81,12 @@ public class BFBookSearchFragment extends BFBaseFragment {
             BFSearchRequestModel searchmodel = new BFSearchRequestModel();
             switch (radioBtn.getId()) {
                 case R.id.radiobtn_booksearch_keyword:
-                    BFLog.debug("キーワードがチェックされています。");
+                    BFLog.d("キーワードがチェックされています。");
                     searchmodel.setKeyword(searchword);
                     break;
 
                 case R.id.radiobtn_booksearch_isbn:
-                    BFLog.debug("ISBNがチェックされています。");
+                    BFLog.d("ISBNがチェックされています。");
                     searchmodel.setIsbn(searchword);
                     break;
             }
@@ -93,9 +94,9 @@ public class BFBookSearchFragment extends BFBaseFragment {
             String requestUrl = null;
             try {
                 requestUrl = searchmodel.getParamsString();
-                BFLog.debug("requestUrl=" + requestUrl);
+                BFLog.d("requestUrl=" + requestUrl);
             } catch (UnsupportedEncodingException e) {
-                BFLog.error("入力された検索条件エンコードに失敗しました。");
+                BFLog.e("入力された検索条件エンコードに失敗しました。");
                 e.printStackTrace();
                 return;
             }
@@ -108,14 +109,14 @@ public class BFBookSearchFragment extends BFBaseFragment {
 
         @Override
         public void onPostSuccess(String response) {
-            BFLog.debug("responce=" + response);
+            BFLog.d("responce=" + response);
             BFRakutenBookDataModel model = new BFRakutenBookDataModel().getModelFromJson(response);
             
-            ArrayList<BookModel> bookitems = model.getItemlist();
+            ArrayList<BFBookModel> bookitems = model.getItemlist();
             ArrayList<BFBookListCellBean> beanlist = new ArrayList<BFBookListCellBean>();
             
             for (int i = 0; i < bookitems.size(); i++) {
-            	BookModel bookitem = bookitems.get(i);
+            	BFBookModel bookitem = bookitems.get(i);
                 BFBookListCellBean bean = new BFBookListCellBean();
                 bean.setTitle(bookitem.getTitle());
                 bean.setAuthor(bookitem.getAuthor());
@@ -126,7 +127,7 @@ public class BFBookSearchFragment extends BFBaseFragment {
             }
             
             ((BFBaseActivity) getActivity()).setBooklist(beanlist);
-            BFLog.debug("検索結果を" + beanlist.size() + "件 保持しました。");
+            BFLog.d("検索結果を" + beanlist.size() + "件 保持しました。");
             _progressDialog.dismiss();
             
             tranceFragment(new BFBookListFragment());
@@ -139,8 +140,8 @@ public class BFBookSearchFragment extends BFBaseFragment {
             
             //_progressDialog.dismiss();
             Toast.makeText(getActivity(), "検索処理に失敗しました。", Toast.LENGTH_SHORT).show();
-            BFLog.debug("検索処理に失敗しました。");
-            BFLog.debug("responce=" + response);
+            BFLog.d("検索処理に失敗しました。");
+            BFLog.d("responce=" + response);
         }
     };
 

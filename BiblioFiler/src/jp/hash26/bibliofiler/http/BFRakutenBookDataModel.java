@@ -1,7 +1,9 @@
+
 package jp.hash26.bibliofiler.http;
 
 import java.util.ArrayList;
 
+import jp.hash26.bibliofiler.db.common.BFBookModel;
 import jp.hash26.bibliofiler.util.BFLog;
 
 import org.json.JSONArray;
@@ -10,114 +12,114 @@ import org.json.JSONObject;
 
 public class BFRakutenBookDataModel {
 
-	int _count;
+    int _count;
 
-	int _page;
+    int _page;
 
-	int _first;
+    int _first;
 
-	int _last;
+    int _last;
 
-	int _hits;
+    int _hits;
 
-	int _carrier;
+    int _carrier;
 
-	int _pageCount;
+    int _pageCount;
 
-	int _pagecount;
+    int _pagecount;
 
-	ArrayList<BookModel> _itemlist;
+    ArrayList<BFBookModel> _itemlist;
 
-	public ArrayList<BookModel> getItemlist() {
-		return _itemlist;
-	}
+    public ArrayList<BFBookModel> getItemlist() {
+        return _itemlist;
+    }
 
-	public BFRakutenBookDataModel getModelFromJson(String jsonStr) {
+    public BFRakutenBookDataModel getModelFromJson(String jsonStr) {
 
-		try {
+        try {
 
-			JSONObject rootObject = new JSONObject(jsonStr);
+            JSONObject rootObject = new JSONObject(jsonStr);
 
-			int count = rootObject.getInt("count");
-			_count = count;
-			BFLog.debug("count=" + count);
+            int count = rootObject.getInt("count");
+            _count = count;
+            BFLog.d("count=" + count);
 
-			int page = rootObject.getInt("page");
-			_page = page;
-			BFLog.debug(" page=" + page);
+            int page = rootObject.getInt("page");
+            _page = page;
+            BFLog.d(" page=" + page);
 
-			int first = rootObject.getInt("first");
-			_first = first;
-			BFLog.debug(" first=" + first);
+            int first = rootObject.getInt("first");
+            _first = first;
+            BFLog.d(" first=" + first);
 
-			int last = rootObject.getInt("last");
-			_last = last;
-			BFLog.debug(" last=" + last);
+            int last = rootObject.getInt("last");
+            _last = last;
+            BFLog.d(" last=" + last);
 
-			int hits = rootObject.getInt("hits");
-			_hits = hits;
-			BFLog.debug(" hits=" + hits);
+            int hits = rootObject.getInt("hits");
+            _hits = hits;
+            BFLog.d(" hits=" + hits);
 
-			int carrier = rootObject.getInt("carrier");
-			_carrier = carrier;
-			BFLog.debug(" carrier=" + carrier);
+            int carrier = rootObject.getInt("carrier");
+            _carrier = carrier;
+            BFLog.d(" carrier=" + carrier);
 
-			int pageCount = rootObject.getInt("pageCount");
-			_pageCount = pageCount;
-			BFLog.debug(" pageCount=" + pageCount);
+            int pageCount = rootObject.getInt("pageCount");
+            _pageCount = pageCount;
+            BFLog.d(" pageCount=" + pageCount);
 
-			ArrayList<BookModel> itemlist = new ArrayList<BookModel>();
+            ArrayList<BFBookModel> itemlist = new ArrayList<BFBookModel>();
 
-			JSONArray itemsArray = rootObject.getJSONArray("Items");
-			for (int i = 0; i < itemsArray.length(); i++) {
+            JSONArray itemsArray = rootObject.getJSONArray("Items");
+            for (int i = 0; i < itemsArray.length(); i++) {
 
-				BookModel bookModel = new BookModel();
+                BFBookModel bookModel = new BFBookModel();
 
-				JSONObject items = itemsArray.getJSONObject(i);
-				JSONObject item = items.getJSONObject("Item");
+                JSONObject items = itemsArray.getJSONObject(i);
+                JSONObject item = items.getJSONObject("Item");
 
-				String title = item.getString("title");
-				bookModel.setTitle(title);
-				BFLog.debug("title=" + title);
+                String title = item.getString("title");
+                bookModel.setTitle(title);
+                BFLog.d("title=" + title);
 
-				String author = item.getString("author");
-				bookModel.setAuthor(author);
-				BFLog.debug("author=" + author);
+                String author = item.getString("author");
+                bookModel.setAuthor(author);
+                BFLog.d("author=" + author);
 
-				String artistName = item.getString("artistName");
-				bookModel.setArtistName(artistName);
-				BFLog.debug("artistName=" + artistName);
+                String artistName = item.getString("artistName");
+                bookModel.setArtistName(artistName);
+                BFLog.d("artistName=" + artistName);
 
-				String publisherName = item.getString("publisherName");
-				bookModel.setPublisherName(publisherName);
-				BFLog.debug("publisherName=" + publisherName);
+                String publisherName = item.getString("publisherName");
+                bookModel.setPublisherName(publisherName);
+                BFLog.d("publisherName=" + publisherName);
 
-				String isbn = item.getString("isbn");
-				bookModel.setIsbn(isbn);
-				BFLog.debug("isbn=" + isbn);
+                String isbn = item.getString("isbn");
+                bookModel.setIsbn(isbn);
+                BFLog.d("isbn=" + isbn);
 
-				String itemPrice = item.getString("itemPrice");
-				bookModel.setItemPrice(itemPrice);
-				BFLog.debug("itemPrice=" + itemPrice);
+                String itemPrice = item.getString("itemPrice");
+                bookModel.setItemPrice(itemPrice);
+                BFLog.d("itemPrice=" + itemPrice);
 
-				int listPrice = item.getInt("listPrice");
-				bookModel.setListPrice(listPrice);
-				BFLog.debug("listPrice=" + listPrice);
+                String listPrice = item.getString("listPrice");
+                bookModel.setListPrice(listPrice);
+                BFLog.d("listPrice=" + listPrice);
 
-				String largeImageUrl = item.getString("largeImageUrl");
-				bookModel.setLargeImageUrl(largeImageUrl);
-				BFLog.debug("largeImageUrl=" + largeImageUrl);
+                String largeImageUrl = item.getString("largeImageUrl");
+                bookModel.setLargeImageUrl(largeImageUrl);
+                BFLog.d("largeImageUrl=" + largeImageUrl);
 
-				itemlist.add(bookModel);
-			}
+                itemlist.add(bookModel);
+            }
 
-			_itemlist = itemlist;
+            _itemlist = itemlist;
 
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-		return this;
+        return this;
 
-	}
+    }
 }

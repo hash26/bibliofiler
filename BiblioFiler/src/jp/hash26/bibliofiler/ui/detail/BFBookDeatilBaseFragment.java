@@ -1,10 +1,11 @@
+
 package jp.hash26.bibliofiler.ui.detail;
 
 import java.util.List;
 
 import jp.hash26.bibliofiler.R.id;
 import jp.hash26.bibliofiler.R.layout;
-import jp.hash26.bibliofiler.ui.booklist.BFBookListCellBean;
+import jp.hash26.bibliofiler.db.common.BFBookModel;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,20 +14,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class BFBookDeatilBaseFragment extends Fragment{
+public class BFBookDeatilBaseFragment extends Fragment {
 
     private BFDetailPagerAdapter _pageradapter;
+
     private ViewPager _viewPager;
-    
-    List<BFBookListCellBean> _cellBeanList;
-    
-    public void setBookCellBean(List<BFBookListCellBean> cellbeanList){
+
+    List<BFBookModel> _cellBeanList;
+
+    public void setBookCellBean(List<BFBookModel> cellbeanList) {
         _cellBeanList = cellbeanList;
     }
-    
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        
+
         View view = inflater.inflate(layout.fragment_pagerbase, container, false);
         _viewPager = (ViewPager) view.findViewById(id.viewPager_bookdetail_pager);
         FragmentManager fm = getFragmentManager();
@@ -35,5 +37,4 @@ public class BFBookDeatilBaseFragment extends Fragment{
         return view;
     }
 
-    
 }

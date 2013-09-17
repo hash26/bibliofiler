@@ -5,7 +5,8 @@
     android:versionName="1.0" >
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+	<uses-permission android:name="android.permission.CAMERA" />
+	
     <uses-sdk
         android:minSdkVersion="15"
         android:targetSdkVersion="17" />
@@ -16,7 +17,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppBaseTheme" >
         <activity
-            android:name="jp.hash26.bibliofiler.ui.BFBaseActivity"
+            android:name="jp.hash26.bibliofiler.db.common.BFBaseActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

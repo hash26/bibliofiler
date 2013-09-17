@@ -23,9 +23,9 @@ import android.os.Message;
 public class BFHttpGetTask extends AsyncTask<Void, Void, Void> {
 
     // 設定事項
-    private String request_encoding = "UTF-8";
+    private static String REQUEST_ENCODING = "UTF-8";
 
-    private String response_encoding = "UTF-8";
+    private static String RESPONSE_ENCODING = "UTF-8";
 
     private String http_err_msg = null;
 
@@ -55,25 +55,25 @@ public class BFHttpGetTask extends AsyncTask<Void, Void, Void> {
         @Override
         public Void handleResponse(HttpResponse response) throws ClientProtocolException,
                 IOException {
-            BFLog.debug("ResponseCode=" + response.getStatusLine().getStatusCode());
+            BFLog.d("ResponseCode=" + response.getStatusLine().getStatusCode());
 
             switch (response.getStatusLine().getStatusCode()) {
                 case HttpStatus.SC_OK:
-                    BFLog.debug("レスポンス結果：レスポンスの取得に成功");
+                    BFLog.d("レスポンス結果：レスポンスの取得に成功");
 
                     // レスポンスデータをエンコード済みの文字列として取得する。
                     // IOExceptionの可能性あり
                     BFHttpGetTask.this.http_ret_msg = EntityUtils.toString(response.getEntity(),
-                            BFHttpGetTask.this.response_encoding);
+                            BFHttpGetTask.RESPONSE_ENCODING);
                     break;
 
                 case HttpStatus.SC_NOT_FOUND:
-                    BFLog.debug("レスポンス結果：存在しない");
+                    BFLog.d("レスポンス結果：存在しない");
                     BFHttpGetTask.this.http_err_msg = "404 Not Found";
                     break;
 
                 default:
-                    BFLog.debug("レスポンス結果：通信エラー");
+                    BFLog.d("レスポンス結果：通信エラー");
                     BFHttpGetTask.this.http_err_msg = "通信エラーが発生";
             }
             return null;
@@ -82,13 +82,13 @@ public class BFHttpGetTask extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected void onPreExecute() {
-        BFLog.debug("onPreExecute()");
+        BFLog.d("onPreExecute()");
     }
 
     @Override
     protected Void doInBackground(Void... params) {
 
-        BFLog.debug("doInBackground()");
+        BFLog.d("doInBackground()");
 
         HttpClient httpClient = new DefaultHttpClient();
         try {

@@ -41,13 +41,13 @@
 		<suspend_validator>false</suspend_validator>
 		<export_setting>
 			<category_name_to_export>全体</category_name_to_export>
-			<ddl_output>/Users/xyz/Dev-App/github/bibliofiler/BiblioFiler/Doc/ER_BiblioFiler.sql</ddl_output>
+			<ddl_output>/Users/s-hashimoto/Poject/bibliofiler/BiblioFiler/Doc/testdata/ER_BiblioFiler.sql</ddl_output>
 			<excel_output></excel_output>
 			<excel_template></excel_template>
 			<image_output></image_output>
 			<put_diagram_on_excel>false</put_diagram_on_excel>
 			<use_logical_name_as_sheet>false</use_logical_name_as_sheet>
-			<open_after_saved>false</open_after_saved>
+			<open_after_saved>true</open_after_saved>
 			<create_comment>true</create_comment>
 			<create_foreignKey>true</create_foreignKey>
 			<create_index>true</create_index>
@@ -113,7 +113,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2013-06-14 00:55:13</creation_date>
-			<updated_date>2013-06-16 05:31:57</updated_date>
+			<updated_date>2013-08-27 18:33:05</updated_date>
 			<model_property>
 				<name>プロジェクト名</name>
 				<value></value>
@@ -220,12 +220,38 @@
 			<unsigned>false</unsigned>
 			<args></args>
 			<description></description>
+			<logical_name>商品説明文</logical_name>
+			<physical_name>ITEM_CAPTION</physical_name>
+			<type>text</type>
+		</word>
+		<word>
+			<id>6</id>
+			<length>null</length>
+			<decimal>null</decimal>
+			<array>false</array>
+			<array_dimension>null</array_dimension>
+			<unsigned>false</unsigned>
+			<args></args>
+			<description></description>
+			<logical_name>定価</logical_name>
+			<physical_name>LIST_PRICE</physical_name>
+			<type>text</type>
+		</word>
+		<word>
+			<id>7</id>
+			<length>null</length>
+			<decimal>null</decimal>
+			<array>false</array>
+			<array_dimension>null</array_dimension>
+			<unsigned>false</unsigned>
+			<args></args>
+			<description></description>
 			<logical_name>タグ名</logical_name>
 			<physical_name>NAME</physical_name>
 			<type>text</type>
 		</word>
 		<word>
-			<id>6</id>
+			<id>8</id>
 			<length>null</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -238,7 +264,7 @@
 			<type>text</type>
 		</word>
 		<word>
-			<id>7</id>
+			<id>9</id>
 			<length>null</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -251,7 +277,33 @@
 			<type>real</type>
 		</word>
 		<word>
-			<id>8</id>
+			<id>10</id>
+			<length>null</length>
+			<decimal>null</decimal>
+			<array>false</array>
+			<array_dimension>null</array_dimension>
+			<unsigned>false</unsigned>
+			<args></args>
+			<description></description>
+			<logical_name>書籍サブタイトル</logical_name>
+			<physical_name>SUB_TITLE</physical_name>
+			<type>text</type>
+		</word>
+		<word>
+			<id>11</id>
+			<length>null</length>
+			<decimal>null</decimal>
+			<array>false</array>
+			<array_dimension>null</array_dimension>
+			<unsigned>false</unsigned>
+			<args></args>
+			<description></description>
+			<logical_name>書籍サブタイトル カナ</logical_name>
+			<physical_name>SUB_TITLE_KANA</physical_name>
+			<type>text</type>
+		</word>
+		<word>
+			<id>12</id>
 			<length>null</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -264,7 +316,7 @@
 			<type>integer</type>
 		</word>
 		<word>
-			<id>9</id>
+			<id>13</id>
 			<length>null</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -277,7 +329,7 @@
 			<type>text</type>
 		</word>
 		<word>
-			<id>10</id>
+			<id>14</id>
 			<length>null</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -290,7 +342,7 @@
 			<type>text</type>
 		</word>
 		<word>
-			<id>11</id>
+			<id>15</id>
 			<length>null</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -303,7 +355,7 @@
 			<type>integer</type>
 		</word>
 		<word>
-			<id>12</id>
+			<id>16</id>
 			<length>null</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -342,7 +394,7 @@
 			<option></option>
 			<columns>
 				<normal_column>
-					<word_id>8</word_id>
+					<word_id>12</word_id>
 					<id>0</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -374,7 +426,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>5</word_id>
+					<word_id>7</word_id>
 					<id>1</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -406,7 +458,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>11</word_id>
+					<word_id>15</word_id>
 					<id>2</id>
 					<description></description>
 					<unique_key_name>BOOL_TYPE</unique_key_name>
@@ -474,7 +526,7 @@
 			<connections>
 				<relation>
 					<id>0</id>
-					<source>0</source>
+					<source>2</source>
 					<target>1</target>
 					<child_cardinality>1..n</child_cardinality>
 					<parent_cardinality>1</parent_cardinality>
@@ -491,7 +543,7 @@
 				</relation>
 				<relation>
 					<id>1</id>
-					<source>2</source>
+					<source>0</source>
 					<target>1</target>
 					<child_cardinality>1..n</child_cardinality>
 					<parent_cardinality>1</parent_cardinality>
@@ -515,7 +567,7 @@
 			<option></option>
 			<columns>
 				<normal_column>
-					<word_id>12</word_id>
+					<word_id>16</word_id>
 					<id>3</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -549,7 +601,7 @@
 				<normal_column>
 					<id>4</id>
 					<referenced_column>0</referenced_column>
-					<relation>0</relation>
+					<relation>1</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -582,7 +634,7 @@
 				<normal_column>
 					<id>5</id>
 					<referenced_column>6</referenced_column>
-					<relation>1</relation>
+					<relation>0</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -623,7 +675,7 @@
 		</table>
 		<table>
 			<id>2</id>
-			<height>233</height>
+			<height>315</height>
 			<width>214</width>
 				<font_name>Lucida Grande</font_name>
 				<font_size>9</font_size>
@@ -708,7 +760,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>9</word_id>
+					<word_id>13</word_id>
 					<id>8</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -740,7 +792,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>10</word_id>
+					<word_id>14</word_id>
 					<id>9</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -772,7 +824,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>0</word_id>
+					<word_id>10</word_id>
 					<id>10</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -804,7 +856,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>1</word_id>
+					<word_id>11</word_id>
 					<id>11</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -836,7 +888,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>6</word_id>
+					<word_id>0</word_id>
 					<id>12</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -868,8 +920,72 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>7</word_id>
+					<word_id>1</word_id>
 					<id>13</id>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>text</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+					<word_id>8</word_id>
+					<id>14</id>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>text</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+					<word_id>9</word_id>
+					<id>15</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -900,8 +1016,72 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
+					<word_id>6</word_id>
+					<id>16</id>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>text</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+					<word_id>5</word_id>
+					<id>17</id>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>text</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
 					<word_id>3</word_id>
-					<id>14</id>
+					<id>18</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -944,6 +1124,269 @@
 	<column_groups>
 	</column_groups>
 	<test_data_list>
+			<test_data>
+				<name>booktestdata</name>
+				<export_order>0</export_order>
+				<table_test_data>
+					<table_id>2</table_id>
+					<direct_test_data>
+						<data>
+							<column_data>
+								<column_id>6</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>7</column_id>
+								<value>a</value>
+							</column_data>
+							<column_data>
+								<column_id>8</column_id>
+								<value>a</value>
+							</column_data>
+							<column_data>
+								<column_id>9</column_id>
+								<value>a</value>
+							</column_data>
+							<column_data>
+								<column_id>10</column_id>
+								<value>a</value>
+							</column_data>
+							<column_data>
+								<column_id>11</column_id>
+								<value>a</value>
+							</column_data>
+							<column_data>
+								<column_id>12</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>13</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>14</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>15</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>16</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>17</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>18</column_id>
+								<value></value>
+							</column_data>
+						</data>
+					</direct_test_data>
+					<repeat_test_data>
+						<test_data_num>0</test_data_num>
+						<data_def_list>
+							<data_def>
+								<column_id>6</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>1</select>
+								<select>2</select>
+								<select>3</select>
+								<select>4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>7</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>ISBNコード%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>ISBNコード1</select>
+								<select>ISBNコード2</select>
+								<select>ISBNコード3</select>
+								<select>ISBNコード4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>8</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>書籍タイトル%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>書籍タイトル1</select>
+								<select>書籍タイトル2</select>
+								<select>書籍タイトル3</select>
+								<select>書籍タイトル4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>9</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>書籍タイトル カナ%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>書籍タイトル カナ1</select>
+								<select>書籍タイトル カナ2</select>
+								<select>書籍タイトル カナ3</select>
+								<select>書籍タイトル カナ4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>10</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>書籍サブタイトル%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>書籍サブタイトル1</select>
+								<select>書籍サブタイトル2</select>
+								<select>書籍サブタイトル3</select>
+								<select>書籍サブタイトル4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>11</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>書籍サブタイトル カナ%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>書籍サブタイトル カナ1</select>
+								<select>書籍サブタイトル カナ2</select>
+								<select>書籍サブタイトル カナ3</select>
+								<select>書籍サブタイトル カナ4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>12</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>著者名%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>著者名1</select>
+								<select>著者名2</select>
+								<select>著者名3</select>
+								<select>著者名4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>13</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>著者名カナ%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>著者名カナ1</select>
+								<select>著者名カナ2</select>
+								<select>著者名カナ3</select>
+								<select>著者名カナ4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>14</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>出版社名%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>出版社名1</select>
+								<select>出版社名2</select>
+								<select>出版社名3</select>
+								<select>出版社名4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>15</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>1</select>
+								<select>2</select>
+								<select>3</select>
+								<select>4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>16</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>定価%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>定価1</select>
+								<select>定価2</select>
+								<select>定価3</select>
+								<select>定価4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>17</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>商品説明文%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>商品説明文1</select>
+								<select>商品説明文2</select>
+								<select>商品説明文3</select>
+								<select>商品説明文4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>18</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>画像%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>画像1</select>
+								<select>画像2</select>
+								<select>画像3</select>
+								<select>画像4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+						</data_def_list>
+					</repeat_test_data>
+				</table_test_data>
+			</test_data>
 	</test_data_list>
 	<sequence_set>
 	</sequence_set>
